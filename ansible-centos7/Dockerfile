@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos/systemd
 
 ENV USER jenkins
 RUN yum install -y epel-release
