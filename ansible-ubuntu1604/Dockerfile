@@ -19,7 +19,7 @@ RUN mkdir /var/run/sshd
 #https://github.com/gdraheim/docker-systemctl-replacement
 RUN test -d /run/systemd/system || mkdir /run/systemd/system
 RUN apt-get install systemd && apt-mark hold systemd
-COPY ../docker-systemctl-replacement/files/docker/systemctl.py /usr/bin/systemctl
+COPY docker-systemctl-replacement/files/docker/systemctl.py /usr/bin/systemctl
 
 #start ssh server
 EXPOSE 22
