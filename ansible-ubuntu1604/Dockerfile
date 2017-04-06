@@ -3,15 +3,6 @@ FROM ubuntu:16.04
 ENV USER jenkins
 ARG DEBIAN_FRONTEND=noninteractive
 
-#systemd trickery
-RUN find /etc/systemd/system \
-         /lib/systemd/system \
-         -path '*.wants/*' \
-         -not -name '*journald*' \
-         -not -name '*systemd-tmpfiles*' \
-         -not -name '*systemd-user-sessions*' \
-         -exec rm \{} \;
-
 #install necessary packages
 RUN apt-get update &&\
     apt-get -y dist-upgrade
@@ -24,10 +15,11 @@ RUN adduser --disabled-password --gecos "" $USER && \
     adduser $USER sudo
 RUN mkdir /var/run/sshd
 
-#systemd trickery
-VOLUME ["/sys/fs/cgroup"]
-VOLUME ["/run"]
-CMD ["/sbin/init"]
+#copy systemctl replacement
+#https://github.com/gdraheim/docker-systemctl-replacement
+RUN test -d /run/systemd/system || mkdir /run/systemd/system
+RUN apt-get install systemd && apt-mark hold systemd
+COPY ../docker-systemctl-replacement/files/docker/systemctl.py /usr/bin/systemctl
 
 #start ssh server
 EXPOSE 22
