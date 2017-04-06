@@ -17,4 +17,3 @@ RUN mkdir /var/run/sshd
 
 #start ssh server
 EXPOSE 22
-CMD    ["/usr/sbin/sshd", "-D"]

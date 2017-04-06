@@ -1,3 +1,0 @@
-[submodule "ansible-ubuntu1604/docker-systemctl-replacement"]
-	path = ansible-ubuntu1604/docker-systemctl-replacement
-	url = https://github.com/gdraheim/docker-systemctl-replacement
