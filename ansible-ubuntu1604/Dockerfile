@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM solita/ubuntu-systemd:16.04
 
 ENV USER jenkins
 ARG DEBIAN_FRONTEND=noninteractive
@@ -17,4 +17,3 @@ RUN mkdir /var/run/sshd
 
 #start ssh server
 EXPOSE 22
-CMD    ["/usr/sbin/sshd", "-D"]
