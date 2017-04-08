@@ -4,7 +4,7 @@ ENV USER jenkins
 ARG DEBIAN_FRONTEND=noninteractive
 
 #install necessary packages
-RUN apt-get update &&\
+RUN apt-get update && \
     apt-get -y dist-upgrade
 RUN apt-get install -y software-properties-common && \
     apt-add-repository ppa:ansible/ansible && \
