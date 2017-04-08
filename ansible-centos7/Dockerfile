@@ -9,3 +9,5 @@ RUN yum update -y && \
 RUN adduser $USER && \
     echo "$USER:$USER"|chpasswd && \
     usermod -aG wheel $USER
+
+EXPOSE 22
