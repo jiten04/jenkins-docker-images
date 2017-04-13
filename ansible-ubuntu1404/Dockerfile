@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get -y dist-upgrade
 RUN apt-get install -y software-properties-common && \
-    apt-add-repository ppa:ansible/ansible && \
+    add-apt-repository ppa:ansible/ansible && \
     apt-get update
 RUN apt-get install -y openssh-server git ansible openjdk-7-jre
 RUN adduser --disabled-password --gecos "" $USER && \
